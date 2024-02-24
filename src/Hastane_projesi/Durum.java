@@ -4,6 +4,11 @@ public class Durum{
     private String aktuelDurum;
     private boolean aciliyet;
 
+    @Override
+    public String toString() {
+        return "aciliyet=" + aciliyet ;
+    }
+
     public String getAktuelDurum() {
         return aktuelDurum;
     }

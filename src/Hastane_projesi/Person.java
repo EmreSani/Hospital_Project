@@ -9,10 +9,22 @@ class Person {
         this.soyIsim = soyIsim;
     }
 
+    public Person() {
+
+    }
+
+    public void setIsim(String isim) {
+        this.isim = isim;
+    }
+
+    public void setSoyIsim(String soyIsim) {
+        this.soyIsim = soyIsim;
+    }
+
     public String getIsim() {
         return isim;
     }
 
     public String getSoyIsim() {
         return soyIsim;
-    }
+    }}
