@@ -20,14 +20,14 @@ public class HastaneRunner {
         String durum = hastayaDurumunuSor(scan);
         String doktorUnvan = doktorUnvan(durum);
 
- //      hastane1.setHasta(hastaBul(durum));
- //      System.out.println(hastane1.getHasta());
+       hastane1.setHasta(hastaBul(durum));
+       System.out.println(hastane1.getHasta());
 
  //      hastane1.setDoktor(doktorBul(doktorUnvan));
  //      System.out.println(hastane1.getDoktor());
         List<Doktor> doktorlarListesi = doktorlariBul(doktorUnvan);
         if (!doktorlarListesi.isEmpty()) {
-            System.out.println("Genel Cerrahlar:");
+            System.out.println("Alanında uzman doktorlar:");
             for (Doktor doktor : doktorlarListesi) {
                 System.out.println(doktor);
             }
