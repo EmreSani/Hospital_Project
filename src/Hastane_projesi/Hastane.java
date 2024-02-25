@@ -12,8 +12,8 @@ public class Hastane extends VeriBankasi{
         this.doktor = doktor;
     }
 
-    public Hasta getHasta() {
-        return hasta;
+    public Hasta getHasta(Hasta hasta) {
+        return this.hasta;
     }
 
     public void setHasta(Hasta hasta) {

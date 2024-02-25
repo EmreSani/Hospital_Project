@@ -1,6 +1,8 @@
 package Hastane_projesi;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 import static Hastane_projesi.StaticMethods.*;
@@ -10,17 +12,52 @@ public class HastaneRunner {
 
     public static void main(String[] args) {
 
+        VeriBankasi.addDoctor("Emre", "Sani", "Allergist");
+        VeriBankasi.addPatient("Said", "Patlar", "Allerji", 9999);
+        VeriBankasi.addPatient("Mali", "Soylu", "Allerji", 10000);
+
         Scanner scan = new Scanner(System.in);
         String durum = hastayaDurumunuSor(scan);
-        Doktor doktor = doktorBul(doktorUnvan(scan));
+        String doktorUnvan = doktorUnvan(durum);
+
+        hastane1.setHasta(hastaBul(durum));
+        System.out.println(hastane1.getHasta(hastaBul(durum)));
+
+
+
+
+        System.out.println(hastane1.getDoktor(doktorBul(doktorUnvan)));
+      //  Doktor doktor = doktorBul(doktorUnvan);
+
+
+
+
+
+  //      List<Doktor> genelCerrahlar = doktorlariBul(doktorUnvan);
+  //      if (!genelCerrahlar.isEmpty()) {
+  //          System.out.println("Genel Cerrahlar:");
+  //          for (Doktor doktor : genelCerrahlar) {
+  //              System.out.println(doktor);
+  //          }
+  //      } else {
+  //          System.out.println("Belirtilen unvan için doktor bulunamadı.");
+  //      }
+
+      //  hastane1.setDoktor(doktorBul(doktorUnvan(durum)));
+     //   System.out.println(hastane1.getDoktor(doktorBul(doktorUnvan(durum))));
+
+      //  System.out.println(hastane1.getHasta(hastaBul(String.valueOf(scan))));
+
+
+     //   hastane1.setHasta();
         //   Durum hastaDurumu = hastaDurumuBul(durum);
 
-        System.out.println(doktor);
-        System.out.println(hastaBul(durum));
+      //  System.out.println(doktor1);
+     //   System.out.println(hastaBul(durum));
 
         scan.close();
 
-        VeriBankasi.addDoctor("Emre", "Sani", "genel cerrah");
+    //    VeriBankasi.addDoctor("Emre", "Sani", "genel cerrah");
 
         //  String unvan = doktorUnvan(hastaDurumu);
         //   System.out.println("Doktorunuzun unvanı: " + unvan);
