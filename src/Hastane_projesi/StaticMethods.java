@@ -1,10 +1,43 @@
 package Hastane_projesi;
 
+import java.util.Scanner;
+
 public class StaticMethods {
-    public static String doktorUnvan(String aktuelDurum) {
-        String unvan = "Yanlis unvan";
+
+    public static String hastayaDurumunuSor(Scanner scan){
+        System.out.println("Lutfen hangi doktordan randevu almaniz gerektigini ogrenmek icin" +
+                " sikayetinizi giriniz: Allerji, Bas agrisi, Diabet, Soguk Alginligi, Migren, Kalp hastaliklari");
+
+       String durum = scan.nextLine().trim().toLowerCase();
+
+        while (!isValid(durum)) {
+            System.out.println("Geçersiz giriş. Lütfen tekrar deneyiniz.");
+            durum = scan.nextLine().trim().toLowerCase();
+        }
+
+       return durum;
+    }
+
+    private static boolean isValid(String durum) {
+        switch (durum.trim().toLowerCase()){
+            case "allerji":
+            case "baş ağrısı":
+            case "diabet":
+            case "soğuk algınlığı":
+            case "migren":
+            case "kalp hastalıkları":
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    public static String doktorUnvan(Scanner scan) {
+        System.out.println("Lutfen hangi alandan randevu almaniz gerektigini ogrenmek icin" +
+                " sikayetinizi giriniz: Allerji, Bas agrisi, Diabet, Soguk Alginligi, Migren, Kalp hastaliklari");
+        String unvan = scan.nextLine().trim().toLowerCase(scan.locale());
         for (int i = 0; i < VeriBankasi.durumlar.size(); i++) {
-            if (aktuelDurum.equalsIgnoreCase(VeriBankasi.durumlar.get(i))) {
+            if (unvan.equalsIgnoreCase(VeriBankasi.durumlar.get(i))) {
                 unvan = VeriBankasi.unvanlar.get(i);
             }
         }

@@ -6,7 +6,7 @@ public class Durum{
 
     @Override
     public String toString() {
-        return "aciliyet=" + aciliyet ;
+        return "acil bir durum mu=" + aciliyet ;
     }
 
     public String getAktuelDurum() {

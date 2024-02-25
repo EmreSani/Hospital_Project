@@ -20,6 +20,11 @@ public class VeriBankasi {
         doctorIsimleri.add(isim);
         doctorSoyIsimleri.add(soyIsim);
         unvanlar.add(unvan);
+        Doktor doktor = new Doktor();
+        doktor.setIsim(isim);
+        doktor.setSoyIsim(soyIsim);
+        doktor.setUnvan(unvan);
+        // Doktor objesini isterseniz bir listeye ekleyebilir veya başka bir şekilde saklayabilirsiniz
     }
 
     // Doktor Silme Metodu

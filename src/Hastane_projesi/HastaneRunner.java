@@ -7,69 +7,66 @@ import static Hastane_projesi.StaticMethods.*;
 
 public class HastaneRunner {
     private static Hastane hastane1 = new Hastane();
+
     public static void main(String[] args) {
+
         Scanner scan = new Scanner(System.in);
-        System.out.println("Lutfen hangi doktordan randevu almaniz gerektigini ogrenmek icin" +
-                "sikayetinizi giriniz: Allerji, Bas agrisi, Diabet, Soguk Alginligi, Migren, Kalp hastaliklari");
-       String hastaDurumu = scan.nextLine().trim().toLowerCase();
+        String durum = hastayaDurumunuSor(scan);
+        Doktor doktor = doktorBul(doktorUnvan(scan));
+        //   Durum hastaDurumu = hastaDurumuBul(durum);
 
-        String unvan = doktorUnvan(hastaDurumu);
-     //   System.out.println("Doktorunuzun unvanı: " + unvan);
+        System.out.println(doktor);
+        System.out.println(hastaBul(durum));
 
-       // Doktor bulunanDoktor=doktorBul(unvan);
-   //     System.out.println(bulunanDoktor);
+        scan.close();
 
-       // System.out.println(hastaDurumuBul("allerji"));
+        VeriBankasi.addDoctor("Emre", "Sani", "genel cerrah");
 
-        hastane1.setDoktor(doktorBul(unvan));
-        System.out.println(hastane1.getDoktor(doktorBul(unvan)));
+        //  String unvan = doktorUnvan(hastaDurumu);
+        //   System.out.println("Doktorunuzun unvanı: " + unvan);
+
+        // Doktor bulunanDoktor=doktorBul(unvan);
+        //     System.out.println(bulunanDoktor);
+
+        // System.out.println(hastaDurumuBul("allerji"));
+
+        //    hastane1.setDoktor(doktorBul(unvan));
+        //     System.out.println(hastane1.getDoktor(doktorBul(unvan)));
         //hastane1.setHasta(hastaBul(hastaDurumu));
         //System.out.println(hastane1.getHasta());
 
 
+        // System.out.println(VeriBankasi.durumlar);
 
 
-
-       // System.out.println(VeriBankasi.durumlar);
-
-
-      //  VeriBankasi.searchDoctorByName("Nilson");
-      //  VeriBankasi.addDoctor("Emre", "Sani", "Kardiyolog");
-       // VeriBankasi.hospitalStatistics();
-      //  System.out.println(hastane1.hasta.getIsim());
-
-
-
-
-
+        //  VeriBankasi.searchDoctorByName("Nilson");
+        //  VeriBankasi.addDoctor("Emre", "Sani", "Kardiyolog");
+        // VeriBankasi.hospitalStatistics();
+        //  System.out.println(hastane1.hasta.getIsim());
 
 
     }
 
 
- //  public static Doktor doktorBul(String unvan){
- //       VeriBankasi veriBankasi = new VeriBankasi();
- //       Doktor doktor = new Doktor();
- //      for (int i = 0; i < ; i++) {
+    //  public static Doktor doktorBul(String unvan){
+    //       VeriBankasi veriBankasi = new VeriBankasi();
+    //       Doktor doktor = new Doktor();
+    //      for (int i = 0; i < ; i++) {
 //
- //      }
+    //      }
 //
- //   }
-
-
-
+    //   }
 
 
 //
- //   public static Durum hastaDurumuBul(String aktuelDurum){
- //   return
- //   }
+    //   public static Durum hastaDurumuBul(String aktuelDurum){
+    //   return
+    //   }
 //
- //   public static Hasta hastaBul(String actualCase){
- //   return
+    //   public static Hasta hastaBul(String actualCase){
+    //   return
 //
- //   }
-
+    //   }
 
 
 }
