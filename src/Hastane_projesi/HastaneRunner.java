@@ -23,6 +23,10 @@ public class HastaneRunner {
        hastane1.setHasta(hastaBul(durum));
        System.out.println(hastane1.getHasta());
 
+       Doktor doktor1 = doktorBul(doktorUnvan);
+       hastane1.setDoktor(doktor1);
+       System.out.println("burayı oku" + hastane1.getDoktor());
+
  //      hastane1.setDoktor(doktorBul(doktorUnvan));
  //      System.out.println(hastane1.getDoktor());
         List<Doktor> doktorlarListesi = doktorlariBul(doktorUnvan);
@@ -36,7 +40,7 @@ public class HastaneRunner {
         }
 
      Hasta hasta1 = hastaBul(durum);
-        System.out.println("Ben hasta1" + hasta1);
+        System.out.println("Ben hasta1 " + hasta1);
 
 
 

@@ -101,7 +101,7 @@ public class StaticMethods {
         for (int i = 0; i < VeriBankasi.durumlar.size(); i++) {
             if (VeriBankasi.durumlar.get(i).equalsIgnoreCase(durum)) {
                 hasta.setIsim(VeriBankasi.hastaIsimleri.get(i));
-                hasta.setSoyIsim(VeriBankasi.hastaIsimleri.get(i));
+                hasta.setSoyIsim(VeriBankasi.hastaSoyIsimleri.get(i));
                 hasta.setHastaID(VeriBankasi.hastaIDleri.get(i));
                 hasta.setHastaDurumu((hastaDurumuBul(durum)));
                 break;
