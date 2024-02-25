@@ -20,28 +20,29 @@ public class HastaneRunner {
         String durum = hastayaDurumunuSor(scan);
         String doktorUnvan = doktorUnvan(durum);
 
-        hastane1.setHasta(hastaBul(durum));
-        System.out.println(hastane1.getHasta(hastaBul(durum)));
+ //      hastane1.setHasta(hastaBul(durum));
+ //      System.out.println(hastane1.getHasta());
+
+ //      hastane1.setDoktor(doktorBul(doktorUnvan));
+ //      System.out.println(hastane1.getDoktor());
+        List<Doktor> doktorlarListesi = doktorlariBul(doktorUnvan);
+        if (!doktorlarListesi.isEmpty()) {
+            System.out.println("Genel Cerrahlar:");
+            for (Doktor doktor : doktorlarListesi) {
+                System.out.println(doktor);
+            }
+        } else {
+            System.out.println("Belirtilen unvan için doktor bulunamadı.");
+        }
+
+     Hasta hasta1 = hastaBul(durum);
+        System.out.println("Ben hasta1" + hasta1);
 
 
 
 
-        System.out.println(hastane1.getDoktor(doktorBul(doktorUnvan)));
-      //  Doktor doktor = doktorBul(doktorUnvan);
 
 
-
-
-
-  //      List<Doktor> genelCerrahlar = doktorlariBul(doktorUnvan);
-  //      if (!genelCerrahlar.isEmpty()) {
-  //          System.out.println("Genel Cerrahlar:");
-  //          for (Doktor doktor : genelCerrahlar) {
-  //              System.out.println(doktor);
-  //          }
-  //      } else {
-  //          System.out.println("Belirtilen unvan için doktor bulunamadı.");
-  //      }
 
       //  hastane1.setDoktor(doktorBul(doktorUnvan(durum)));
      //   System.out.println(hastane1.getDoktor(doktorBul(doktorUnvan(durum))));

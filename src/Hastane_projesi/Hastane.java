@@ -4,7 +4,7 @@ public class Hastane extends VeriBankasi{
     Doktor doktor = new Doktor();
     Hasta hasta = new Hasta();
 
-    public Doktor getDoktor(Doktor doktor) {
+    public Doktor getDoktor() {
         return this.doktor;
     }
 
@@ -12,7 +12,7 @@ public class Hastane extends VeriBankasi{
         this.doktor = doktor;
     }
 
-    public Hasta getHasta(Hasta hasta) {
+    public Hasta getHasta() {
         return this.hasta;
     }
 

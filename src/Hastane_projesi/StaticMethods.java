@@ -1,6 +1,7 @@
 package Hastane_projesi;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class StaticMethods {
@@ -72,6 +73,7 @@ public class StaticMethods {
         }
         return doktorlar;
     }
+
     public static Durum hastaDurumuBul(String durum) {
         Durum hastaAciliyetDurumu = new Durum();
         switch (durum) {
