@@ -1,6 +1,6 @@
 package Hastane_projesi;
 
-interface PersonService {
+interface Service {
     void add();
 
     void remove();

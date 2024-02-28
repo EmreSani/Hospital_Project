@@ -1,6 +1,6 @@
 package Hastane_projesi;
 
-public class PatientService implements PersonService{
+public class PatientService implements Service {
     @Override
     public void add() {
 

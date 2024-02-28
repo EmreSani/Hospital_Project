@@ -1,13 +1,12 @@
 package Hastane_projesi;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 
 import static Hastane_projesi.HastaneService.scan;
 import static Hastane_projesi.HastaneService.slowPrint;
 
-public class DoctorService implements PersonService {
+public class DoctorService implements Service {
 
     private static Hastane hastane = new Hastane();
     LinkedList<Doktor> doktorList = new LinkedList<>();
