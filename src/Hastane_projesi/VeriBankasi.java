@@ -1,121 +1,108 @@
 package Hastane_projesi;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class VeriBankasi {
-    static ArrayList<String> doctorIsimleri = new ArrayList<>();
-    static ArrayList<String> doctorSoyIsimleri = new ArrayList<>();
-    static ArrayList<String> unvanlar = new ArrayList<>();
-    static ArrayList<String> hastaIsimleri = new ArrayList<>();
-    static ArrayList<String> hastaSoyIsimleri = new ArrayList<>();
-    static ArrayList<String> durumlar = new ArrayList<>();
-    static ArrayList<Integer> hastaIDleri = new ArrayList<>();
+   List<String> doctorIsimleri = new ArrayList<>();
+   List<String> doctorSoyIsimleri = new ArrayList<>();
+   List<String> unvanlar = new ArrayList<>();
+   List<String> hastaIsimleri = new ArrayList<>();
+   List<String> hastaSoyIsimleri = new ArrayList<>();
+   List<String> durumlar = new ArrayList<>();
+   List<Integer> hastaIDleri = new ArrayList<>();
 
 
 
-
-
-    // Doktor Ekleme Metodu
-    public static void addDoctor(String isim, String soyIsim, String unvan) {
-        doctorIsimleri.add(isim);
-        doctorSoyIsimleri.add(soyIsim);
-        unvanlar.add(unvan);
-        Doktor doktor = new Doktor();
-        doktor.setIsim(isim);
-        doktor.setSoyIsim(soyIsim);
-        doktor.setUnvan(unvan);
-        // Doktor objesini isterseniz bir listeye ekleyebilir veya başka bir şekilde saklayabilirsiniz
-    }
-
-    // Doktor Silme Metodu
-    public static void removeDoctor(int index) {
-        if (index >= 0 && index < doctorIsimleri.size()) {
-            doctorIsimleri.remove(index);
-            doctorSoyIsimleri.remove(index);
-            unvanlar.remove(index);
-            // Diğer ilgili verileri de buradan silin...
-            System.out.println("Doktor başarıyla silindi.");
-        } else {
-            System.out.println("Geçersiz indeks.");
-        }
-    }
+// Doktor Silme Metodu
+//  public static void removeDoctor(int index) {
+//      if (index >= 0 && index < doctorIsimleri.size()) {
+//          doctorIsimleri.remove(index);
+//          doctorSoyIsimleri.remove(index);
+//          unvanlar.remove(index);
+//          // Diğer ilgili verileri de buradan silin...
+//          System.out.println("Doktor başarıyla silindi.");
+//      } else {
+//          System.out.println("Geçersiz indeks.");
+//      }
+//  }
 
     // Doktor Güncelleme Metodu
-    public static void updateDoctor(int index, String isim, String soyIsim, String unvan) {
-        if (index >= 0 && index < doctorIsimleri.size()) {
-            doctorIsimleri.set(index, isim);
-            doctorSoyIsimleri.set(index, soyIsim);
-            unvanlar.set(index, unvan);
-            // Diğer ilgili verileri de buradan güncelleyin...
-            System.out.println("Doktor başarıyla güncellendi.");
-        } else {
-            System.out.println("Geçersiz indeks.");
-        }
-    }
+ //  public static void updateDoctor(int index, String isim, String soyIsim, String unvan) {
+ //      if (index >= 0 && index < doctorIsimleri.size()) {
+ //          doctorIsimleri.set(index, isim);
+ //          doctorSoyIsimleri.set(index, soyIsim);
+ //          unvanlar.set(index, unvan);
+ //          // Diğer ilgili verileri de buradan güncelleyin...
+ //          System.out.println("Doktor başarıyla güncellendi.");
+ //      } else {
+ //          System.out.println("Geçersiz indeks.");
+ //      }
+ //  }
 
     // Doktor Arama Metodu
-    public static void searchDoctorByName(String name) {
-        System.out.println("Aranan doktorlar:");
-        for (int i = 0; i < doctorIsimleri.size(); i++) {
-            if (doctorIsimleri.get(i).equalsIgnoreCase(name)) {
-                System.out.println("İsim: " + doctorIsimleri.get(i) + ", Soyisim: " + doctorSoyIsimleri.get(i) + ", Unvan: " + unvanlar.get(i));
-            }
-        }
-    }
+ //   public static void searchDoctorByName(String name) {
+ //       System.out.println("Aranan doktorlar:");
+ //       for (int i = 0; i < doctorIsimleri.size(); i++) {
+ //           if (doctorIsimleri.get(i).equalsIgnoreCase(name)) {
+ //               System.out.println("İsim: " + doctorIsimleri.get(i) + ", Soyisim: " + doctorSoyIsimleri.get(i) + ", Unvan: " + unvanlar.get(i));
+ //           }
+ //       }
+ //   }
 
     // Hastane Durumu Metodu
-    public static void hospitalStatistics() {
-        System.out.println("Hastane İstatistikleri:");
-        System.out.println("Toplam Doktor Sayısı: " + doctorIsimleri.size());
-        System.out.println("Toplam Hasta Sayısı: " + hastaIsimleri.size());
-        // İlgili diğer istatistikleri burada hesaplayın...
-    }
+ //   public static void hospitalStatistics() {
+ //       System.out.println("Hastane İstatistikleri:");
+ //       System.out.println("Toplam Doktor Sayısı: " + doctorIsimleri.size());
+ //       System.out.println("Toplam Hasta Sayısı: " + hastaIsimleri.size());
+ //       // İlgili diğer istatistikleri burada hesaplayın...
+ //   }
 
     // Hasta Ekleme Metodu
-    public static void addPatient(String isim, String soyIsim, String durum, int hastaID) {
-        hastaIsimleri.add(isim);
-        hastaSoyIsimleri.add(soyIsim);
-        durumlar.add(durum);
-        hastaIDleri.add(hastaID);
-    }
+ //   public static void addPatient(String isim, String soyIsim, String durum, int hastaID) {
+ //       hastaIsimleri.add(isim);
+ //       hastaSoyIsimleri.add(soyIsim);
+ //       durumlar.add(durum);
+ //       hastaIDleri.add(hastaID);
+ //   }
 
     // Hasta Silme Metodu
-    public static void removePatient(int index) {
-        if (index >= 0 && index < hastaIsimleri.size()) {
-            hastaIsimleri.remove(index);
-            hastaSoyIsimleri.remove(index);
-            durumlar.remove(index);
-            hastaIDleri.remove(index);
-            System.out.println("Hasta başarıyla silindi.");
-        } else {
-            System.out.println("Geçersiz indeks.");
-        }
-    }
+ //   public static void removePatient(int index) {
+ //       if (index >= 0 && index < hastaIsimleri.size()) {
+ //           hastaIsimleri.remove(index);
+ //           hastaSoyIsimleri.remove(index);
+ //           durumlar.remove(index);
+ //           hastaIDleri.remove(index);
+ //           System.out.println("Hasta başarıyla silindi.");
+ //       } else {
+ //           System.out.println("Geçersiz indeks.");
+ //       }
+ //   }
 
     // Hasta Güncelleme Metodu
-    public static void updatePatient(int index, String isim, String soyIsim, String durum, int hastaID) {
-        if (index >= 0 && index < hastaIsimleri.size()) {
-            hastaIsimleri.set(index, isim);
-            hastaSoyIsimleri.set(index, soyIsim);
-            durumlar.set(index, durum);
-            hastaIDleri.set(index, hastaID);
-            System.out.println("Hasta başarıyla güncellendi.");
-        } else {
-            System.out.println("Geçersiz indeks.");
-        }
-    }
+ //  public static void updatePatient(int index, String isim, String soyIsim, String durum, int hastaID) {
+ //      if (index >= 0 && index < hastaIsimleri.size()) {
+ //          hastaIsimleri.set(index, isim);
+ //          hastaSoyIsimleri.set(index, soyIsim);
+ //          durumlar.set(index, durum);
+ //          hastaIDleri.set(index, hastaID);
+ //          System.out.println("Hasta başarıyla güncellendi.");
+ //      } else {
+ //          System.out.println("Geçersiz indeks.");
+ //      }
+ //  }
 
     // Hasta Arama Metodu
-    public static void searchPatientByName(String name) {
-        System.out.println("Aranan hastalar:");
-        for (int i = 0; i < hastaIsimleri.size(); i++) {
-            if (hastaIsimleri.get(i).equalsIgnoreCase(name)) {
-                System.out.println("İsim: " + hastaIsimleri.get(i) + ", Soyisim: " + hastaSoyIsimleri.get(i) + ", Durum: " + durumlar.get(i) + ", Hasta ID: " + hastaIDleri.get(i));
-            }
-        }
-    }
+ //  public static void searchPatientByName(String name) {
+ //      System.out.println("Aranan hastalar:");
+ //      for (int i = 0; i < hastaIsimleri.size(); i++) {
+ //          if (hastaIsimleri.get(i).equalsIgnoreCase(name)) {
+ //              System.out.println("İsim: " + hastaIsimleri.get(i) + ", Soyisim: " + hastaSoyIsimleri.get(i) + ", Durum: " + durumlar.get(i) + ", Hasta ID: " + hastaIDleri.get(i));
+ //          }
+ //      }
+ //  }
 
-    static {
+   {
         // Verilerin başlatılması
         doctorIsimleri.add("Nilson");
         doctorIsimleri.add("John");

@@ -1,12 +1,12 @@
 package Hastane_projesi;
 
-public class Durum{
+public class Durum {
     private String aktuelDurum;
     private boolean aciliyet;
 
     @Override
     public String toString() {
-        return "acil bir durum mu=" + aciliyet ;
+        return "acil bir durum mu=" + aciliyet;
     }
 
     public String getAktuelDurum() {

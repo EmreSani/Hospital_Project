@@ -1,6 +1,6 @@
 package Hastane_projesi;
 
-class Person {
+public abstract class Person{
     protected String isim;
     protected String soyIsim;
 
@@ -27,4 +27,5 @@ class Person {
 
     public String getSoyIsim() {
         return soyIsim;
-    }}
+    }
+}

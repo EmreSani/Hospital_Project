@@ -1,7 +1,21 @@
 package Hastane_projesi;
 
-public class Doktor extends Person{
+public class Doktor extends Person {
     String unvan;
+
+
+
+    public Doktor() {
+    }
+
+    public Doktor(String isim, String soyIsim, String unvan) {
+        super(isim, soyIsim);
+        this.unvan = unvan;
+    }
+
+    public Doktor(String unvan) {
+        this.unvan = unvan;
+    }
 
     public String getUnvan() {
         return unvan;

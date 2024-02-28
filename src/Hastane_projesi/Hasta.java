@@ -11,7 +11,6 @@ class Hasta extends Person {
     }
 
 
-
     public void setHastaID(int hastaID) {
         this.hastaID = hastaID;
     }
@@ -32,12 +31,12 @@ class Hasta extends Person {
         return hastaID;
     }
 
+
     @Override
     public String toString() {
         return "Hasta İsmi: " + this.isim + ", Soyisim: " + this.soyIsim + ", Hasta ID: " + this.hastaID + ", " +
                 "Hasta durumu: " + this.hastaDurumu;
     }
-
 
 
 }

@@ -1,8 +1,10 @@
 package Hastane_projesi;
 
-public class Hastane extends VeriBankasi{
+public class Hastane extends VeriBankasi {
     Doktor doktor = new Doktor();
     Hasta hasta = new Hasta();
+
+
 
     public Doktor getDoktor() {
         return this.doktor;

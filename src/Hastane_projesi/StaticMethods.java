@@ -5,22 +5,24 @@ import java.util.List;
 import java.util.Scanner;
 
 public class StaticMethods {
+    static Hastane hastane = new Hastane();
 
-    public static String hastayaDurumunuSor(Scanner scan){
+    public static String hastayaDurumunuSor(Scanner scan) {
         System.out.println("Lutfen hangi doktordan randevu almaniz gerektigini ogrenmek icin" +
                 " sikayetinizi giriniz: Allerji, Bas agrisi, Diabet, Soguk Alginligi, Migren, Kalp hastaliklari");
 
-       String durum = scan.nextLine().trim().toLowerCase();
+        String durum = scan.nextLine().trim().toLowerCase();
 
         while (!isValid(durum)) {
             System.out.println("Geçersiz giriş. Lütfen tekrar deneyiniz.");
             durum = scan.nextLine().trim().toLowerCase();
         }
 
-       return durum;
+        return durum;
     }
+
     private static boolean isValid(String durum) {
-        switch (durum){
+        switch (durum) {
             case "allerji":
             case "baş ağrısı":
             case "diabet":
@@ -33,12 +35,12 @@ public class StaticMethods {
         }
     }
 
-    public static String doktorUnvan(String durum) {
-    String unvan = "gecersiz unvan";
+    public String doktorUnvan(String durum) {
+        String unvan = "gecersiz unvan";
 
-        for (int i = 0; i < VeriBankasi.durumlar.size(); i++) {
-            if (durum.equalsIgnoreCase(VeriBankasi.durumlar.get(i))) {
-                unvan = VeriBankasi.unvanlar.get(i);
+        for (int i = 0; i < hastane.durumlar.size(); i++) {
+            if (durum.equalsIgnoreCase(hastane.durumlar.get(i))) {
+                unvan = hastane.unvanlar.get(i);
                 break;
             }
         }
@@ -46,33 +48,33 @@ public class StaticMethods {
         return unvan;
     }
 
-    public static Doktor doktorBul(String unvan) {
-        Doktor doktor = new Doktor();
-        for (int i = 0; i < VeriBankasi.unvanlar.size(); i++) {
-            if (VeriBankasi.unvanlar.get(i).equals(unvan)) {
-                doktor.setIsim(VeriBankasi.doctorIsimleri.get(i));
-                doktor.setSoyIsim(VeriBankasi.doctorSoyIsimleri.get(i));
-                doktor.setUnvan(VeriBankasi.unvanlar.get(i));
-                break;
-            }
-        }
-        return doktor;
-    }
-    
-    public static ArrayList<Doktor> doktorlariBul(String unvan){
-        ArrayList<Doktor> doktorlar = new ArrayList<>();
-        for (int i = 0; i < VeriBankasi.unvanlar.size(); i++) {
+  public static Doktor doktorBul(String unvan) {
+      Doktor doktor = new Doktor();
+      for (int i = 0; i < hastane.unvanlar.size(); i++) {
+          if (hastane.unvanlar.get(i).equals(unvan)) {
+              doktor.setIsim(hastane.doctorIsimleri.get(i));
+              doktor.setSoyIsim(hastane.doctorSoyIsimleri.get(i));
+              doktor.setUnvan(hastane.unvanlar.get(i));
+              break;
+          }
+      }
+      return doktor;
+  }
 
-            if (VeriBankasi.unvanlar.get(i).equalsIgnoreCase(unvan)){
-                Doktor doktor = new Doktor();
-                doktor.setIsim(VeriBankasi.doctorIsimleri.get(i));
-                doktor.setSoyIsim(VeriBankasi.doctorSoyIsimleri.get(i));
-                doktor.setUnvan(VeriBankasi.unvanlar.get(i));
-                doktorlar.add(doktor);
-            }
-        }
-        return doktorlar;
-    }
+  public static ArrayList<Doktor> doktorlariBul(String unvan) {
+      ArrayList<Doktor> doktorlar = new ArrayList<>();
+      for (int i = 0; i < hastane.unvanlar.size(); i++) {
+
+          if (hastane.unvanlar.get(i).equalsIgnoreCase(unvan)) {
+              Doktor doktor = new Doktor();
+              doktor.setIsim(hastane.doctorIsimleri.get(i));
+              doktor.setSoyIsim(hastane.doctorSoyIsimleri.get(i));
+              doktor.setUnvan(hastane.unvanlar.get(i));
+              doktorlar.add(doktor);
+          }
+      }
+      return doktorlar;
+  }
 
     public static Durum hastaDurumuBul(String durum) {
         Durum hastaAciliyetDurumu = new Durum();
@@ -98,11 +100,11 @@ public class StaticMethods {
 
     public static Hasta hastaBul(String durum) {
         Hasta hasta = new Hasta();
-        for (int i = 0; i < VeriBankasi.durumlar.size(); i++) {
-            if (VeriBankasi.durumlar.get(i).equalsIgnoreCase(durum)) {
-                hasta.setIsim(VeriBankasi.hastaIsimleri.get(i));
-                hasta.setSoyIsim(VeriBankasi.hastaSoyIsimleri.get(i));
-                hasta.setHastaID(VeriBankasi.hastaIDleri.get(i));
+        for (int i = 0; i < hastane.durumlar.size(); i++) {
+            if (hastane.durumlar.get(i).equalsIgnoreCase(durum)) {
+                hasta.setIsim(hastane.hastaIsimleri.get(i));
+                hasta.setSoyIsim(hastane.hastaSoyIsimleri.get(i));
+                hasta.setHastaID(hastane.hastaIDleri.get(i));
                 hasta.setHastaDurumu((hastaDurumuBul(durum)));
                 break;
             }
