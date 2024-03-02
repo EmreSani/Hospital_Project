@@ -36,6 +36,7 @@ public class DoctorService {
                     String durum = scan.nextLine().trim();
                     //System.out.println(hastaBul(durum));
                     patientService.listPatientByCase(durum);
+                    //o durumda bir hasta yoksa hicbir sey dondurmuyor
                     break;
                 case 4:
                     patientService.listPatients();
@@ -62,7 +63,7 @@ public class DoctorService {
         String doktorUnvan = scan.nextLine();
         Doctor doctor = new Doctor(doktorAdi, doktorSoyadi, doktorUnvan);
         doctorList.add(doctor);
-        System.out.println(doctor.getIsim() + doctor.getSoyIsim() + " isimli doktor sisteme başarıyla eklenmiştir...");
+        System.out.println(doctor.getIsim() + " " +doctor.getSoyIsim() + " isimli doktor sisteme başarıyla eklenmiştir...");
         listDoctors();
         // Doktor objesini istersek bir listeye ekleyebilir veya başka bir şekilde saklayabiliriz
 
