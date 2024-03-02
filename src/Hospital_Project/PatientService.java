@@ -22,7 +22,8 @@ public class PatientService {
             try {
                 secim = scan.nextInt();
                 scan.nextLine();
-            } catch (Exception e) {
+            }
+            catch (Exception e) {
                 System.out.println("\"LUTFEN SIZE SUNULAN SECENEKLERIN DISINDA VERI GIRISI YAPMAYINIZ!\"");
                 continue;
             }
@@ -44,7 +45,7 @@ public class PatientService {
                     break;
                 case 0:
                     slowPrint("ANA MENUYE YÖNLENDİRİLİYORSUNUZ...\n", 20);
-                    //      hospitalService.start();
+                          hospitalService.start();
                     break;
                 default:
                     System.out.println("HATALI GİRİŞ, TEKRAR DENEYİNİZ...\n");
