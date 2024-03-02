@@ -6,13 +6,12 @@ import java.util.Scanner;
 import static Hastane_projesi.HastaneService.scan;
 import static Hastane_projesi.HastaneService.slowPrint;
 
-public class DoctorService implements Service {
+public class DoktorServisi implements Service {
 
     private static Hastane hastane = new Hastane();
     LinkedList<Doktor> doktorList = new LinkedList<>();
 
-    @Override
-    public void menu() {
+    public void doktorGirisiMenu() {
         int secim = -1;
         while (secim != 0) {
             System.out.println("=========================================");
@@ -52,7 +51,7 @@ public class DoctorService implements Service {
     }
 
     @Override
-    public void add() {
+    public void addDoctor() {
         // Doktor Ekleme Metodu
         System.out.println("Eklemek istediginiz doktor ismini giriniz");
         String doktorAdi = scan.next();
@@ -70,7 +69,7 @@ public class DoctorService implements Service {
 
 
     @Override
-    public void remove() {
+    public void removeDoctor() {
         list();
         Scanner scan = new Scanner(System.in);
         System.out.println("Silmek istediginiz doktor ismini giriniz");
@@ -93,12 +92,10 @@ public class DoctorService implements Service {
         list();
     }
 
-
-    @Override
-    public void search() {
+    public void unvandanDoktorBul() {
         System.out.println("Bulmak Istediginiz Doktorun Unvanini Giriniz:\n\t=> Allergist\n\t=> Norolog\n\t" +
                 "=> Genel Cerrah\n\t=> Cocuk Doktoru\n\t=> Dahiliye Uzmanı\n\t=> Kardiolog");
-        scan.nextLine();
+        //scan.nextLine();
         String unvan = scan.nextLine();
 
         System.out.println("------------------------------------------------------");
@@ -117,42 +114,41 @@ public class DoctorService implements Service {
             System.out.println("BU UNVANA AİT DOKTOR BULUNMAMAKTADIR");
             slowPrint("\033[39mANAMENU'YE YONLENDIRILIYORSUNUZ...\033[0m\n", 20);
         }
-            System.out.println("------------------------------------------------------");
+        System.out.println("------------------------------------------------------");
 
-        }
+    }
 
-
-        @Override
-        public void list () {
-            System.out.println("------------------------------------------------------");
-            System.out.println("---------- HASTANEDE BULUNAN DOKTORLARİMİZ -----------");
-            System.out.printf("%-13s | %-15s | %-15s\n", "DOKTOR İSİM", "DOKTOR SOYİSİM", "DOKTOR UNVAN");
-            System.out.println("------------------------------------------------------");
-            for (Doktor w : doktorList) {
-                System.out.printf("%-13s | %-15s | %-15s\n", w.getIsim(), w.getSoyIsim(), w.getUnvan());
-
-
-            }
+    public void listDoctors() {
+        System.out.println("------------------------------------------------------");
+        System.out.println("---------- HASTANEDE BULUNAN DOKTORLARİMİZ -----------");
+        System.out.printf("%-13s | %-15s | %-15s\n", "DOKTOR İSİM", "DOKTOR SOYİSİM", "DOKTOR UNVAN");
+        System.out.println("------------------------------------------------------");
+        for (Doktor w : doktorList) {
+            System.out.printf("%-13s | %-15s | %-15s\n", w.getIsim(), w.getSoyIsim(), w.getUnvan());
 
 
         }
 
-        public Doktor doktorBul (String unvan){
-            Doktor doktor = new Doktor();
-            for (int i = 0; i < hastane.unvanlar.size(); i++) {
-                if (hastane.unvanlar.get(i).equals(unvan)) {
-                    doktor.setIsim(hastane.doctorIsimleri.get(i));
-                    doktor.setSoyIsim(hastane.doctorSoyIsimleri.get(i));
-                    doktor.setUnvan(hastane.unvanlar.get(i));
-                    break;
 
-                }
+    }
+
+    public Doktor doktorBul(String unvan) {
+        Doktor doktor = new Doktor();
+        for (int i = 0; i < hastane.unvanlar.size(); i++) {
+            if (hastane.unvanlar.get(i).equals(unvan)) {
+                doktor.setIsim(hastane.doctorIsimleri.get(i));
+                doktor.setSoyIsim(hastane.doctorSoyIsimleri.get(i));
+                doktor.setUnvan(hastane.unvanlar.get(i));
+                break;
+
             }
-            return doktor;
         }
-        public void firstList () {
-            for (String w : hastane.unvanlar) {
-                doktorList.add(doktorBul(w));
-            }
+        return doktor;
+    }
+
+    public void firstListDoktor() {
+        for (String w : hastane.unvanlar) {
+            doktorList.add(doktorBul(w));
         }
     }
+}
