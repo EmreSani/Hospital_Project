@@ -1,29 +1,28 @@
-package Hastane_projesi;
+package Hospital_Project;
 
-class Hasta extends Person {
+class Patient extends Person {
     private int hastaID;
-    private Durum hastaDurumu;
+    private Case hastaDurumu;
 
-    public Hasta(String isim, String soyIsim, int hastaID, Durum hastaDurumu) {
+    public Patient(String isim, String soyIsim, int hastaID, Case hastaDurumu) {
         super(isim, soyIsim);
         this.hastaID = hastaID;
         this.hastaDurumu = hastaDurumu;
     }
 
-
     public void setHastaID(int hastaID) {
         this.hastaID = hastaID;
     }
 
-    public Durum getHastaDurumu() {
+    public Case getHastaDurumu() {
         return hastaDurumu;
     }
 
-    public void setHastaDurumu(Durum hastaDurumu) {
+    public void setHastaDurumu(Case hastaDurumu) {
         this.hastaDurumu = hastaDurumu;
     }
 
-    public Hasta() {
+    public Patient() {
         super();
     }
 

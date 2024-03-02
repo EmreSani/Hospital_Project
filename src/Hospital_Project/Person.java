@@ -1,6 +1,6 @@
-package Hastane_projesi;
+package Hospital_Project;
 
-public abstract class Person{
+public abstract class Person {
     protected String isim;
     protected String soyIsim;
 
@@ -8,11 +8,9 @@ public abstract class Person{
         this.isim = isim;
         this.soyIsim = soyIsim;
     }
-
     public Person() {
 
     }
-
     public void setIsim(String isim) {
         this.isim = isim;
     }

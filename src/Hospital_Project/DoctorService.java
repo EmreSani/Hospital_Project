@@ -1,87 +1,89 @@
-package Hastane_projesi;
+package Hospital_Project;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-import static Hastane_projesi.HastaneService.scan;
-import static Hastane_projesi.HastaneService.slowPrint;
+import static Hospital_Project.HospitalService.*;
 
-public class DoktorServisi implements Service {
+public class DoctorService {
+    static LinkedList<Doctor> doctorList = new LinkedList<>();
 
-    private static Hastane hastane = new Hastane();
-    LinkedList<Doktor> doktorList = new LinkedList<>();
+    public void doctorEntryMenu() throws InterruptedException, IOException {
 
-    public void doktorGirisiMenu() {
         int secim = -1;
-        while (secim != 0) {
+        do {
             System.out.println("=========================================");
-            System.out.println("LUTFEN YAPMAK ISTEDIGINIZ ISLEMI SECINIZ:\n\t=> 1-DOKTOR EKLE\n\t=> 2-DOKTORLARI LISTELE\n\t" +
-                    "=> 3-UNVANDAN DOKTOR BULMA\n\t=> 4-DOKTOR SIL\n\t=> 0-ANAMENU");
+            System.out.println("LUTFEN YAPMAK ISTEDIGINIZ ISLEMI SECINIZ:\n\t=> 1-DOKTORLARI LISTELE\n\t" +
+                    "=> 2-UNVANDAN DOKTOR BULMA\n\t=> 3-HASTA BULMA\n\t=> 4-HASTALARI LISTELE \n\t=>0-ANAMENU");
             System.out.println("=========================================");
             try {
                 secim = scan.nextInt();
+                scan.nextLine();//dummy
             } catch (Exception e) {
-                scan.nextLine();
-                System.out.println("LUTFEN SIZE SUNULAN SECENEKLERIN DISINDA VERI GIRISI YAPMAYINIZ!");
+
+                System.out.println("\"LUTFEN SIZE SUNULAN SECENEKLERIN DISINDA VERI GIRISI YAPMAYINIZ!\"");
                 continue;
             }
             switch (secim) {
                 case 1:
-                    add();
+                    listDoctors();
                     break;
                 case 2:
-                    list();
+                    findDoctorByTitle();
                     break;
                 case 3:
-                    search();
+                    System.out.println("BULMAK İSTEDİĞİNİZ HASTANIN DURUMUNU GİRİNİZ...");
+                    String durum = scan.nextLine().trim();
+                    //System.out.println(hastaBul(durum));
+                    patientService.listPatientByCase(durum);
                     break;
                 case 4:
-                    remove();
+                    patientService.listPatients();
+                    //
                     break;
                 case 0:
-                    slowPrint("ANA MENUYE YONLENİDİRİLİYORSUNUZ....\n", 20);
+                    slowPrint("ANA MENUYE YÖNLENDİRİLİYORSUNUZ...\n", 20);
+                    hospitalService.start();
                     break;
                 default:
-                    System.out.println("HATALI GIRIS, TEKRAR DENEYINIZ!");
-
+                    System.out.println("HATALI GİRİŞ, TEKRAR DENEYİNİZ...\n");
             }
-
-        }
+        } while (secim != 0);
 
     }
 
-    @Override
     public void addDoctor() {
         // Doktor Ekleme Metodu
         System.out.println("Eklemek istediginiz doktor ismini giriniz");
-        String doktorAdi = scan.next();
+        String doktorAdi = scan.nextLine();
         System.out.println("Eklemek istediginiz doktor soy ismini giriniz");
-        String doktorSoyadi = scan.next();
+        String doktorSoyadi = scan.nextLine();
         System.out.println("Eklemek İstediginiz doktor Unvanini Giriniz: \n \t=> Allergist\n\t=> Norolog\n\t=> Genel Cerrah\n\t" +
                 "=> Cocuk Doktoru\n\t=> Dahiliye\n\t=> Kardiolog");
-        String doktorUnvan = scan.next();
-        Doktor doktor = new Doktor(doktorAdi, doktorSoyadi, doktorUnvan);
-        doktorList.add(doktor);
-        list();
-        // Doktor objesini isterseniz bir listeye ekleyebilir veya başka bir şekilde saklayabiliriz
+        String doktorUnvan = scan.nextLine();
+        Doctor doctor = new Doctor(doktorAdi, doktorSoyadi, doktorUnvan);
+        doctorList.add(doctor);
+        listDoctors();
+        // Doktor objesini istersek bir listeye ekleyebilir veya başka bir şekilde saklayabiliriz
 
     }
 
 
-    @Override
     public void removeDoctor() {
-        list();
+        listDoctors();
         Scanner scan = new Scanner(System.in);
         System.out.println("Silmek istediginiz doktor ismini giriniz");
-        String doktorName = scan.next();
+        String doktorName = scan.nextLine().trim();
         System.out.println("Silmek istediginiz doktor soyadini giriniz");
-        String doktorSurname = scan.next();
-        System.out.println(doktorList);
+        String doktorSurname = scan.nextLine().trim();
+        System.out.println(doctorList);
 
         boolean isDeleted = false;
-        for (Doktor w : doktorList) {
+        for (Doctor w : doctorList) {
             if (w.getIsim().equalsIgnoreCase(doktorName) && w.getSoyIsim().equalsIgnoreCase(doktorSurname)) {
-                doktorList.remove(w);
+                System.out.println(w.getIsim()+" "+w.getSoyIsim()+ " isimli doktor sistemden basariyla silinmistir...");
+                doctorList.remove(w);
                 isDeleted = true;
                 break;
             }
@@ -89,10 +91,10 @@ public class DoktorServisi implements Service {
         if (!isDeleted) {
             System.out.println("SİLMEK İSTEDİGİNİZ DOKTOR LİSTEMİZDE BULUNMAMAKTADIR");
         }
-        list();
+        listDoctors();
     }
 
-    public void unvandanDoktorBul() {
+    public void findDoctorByTitle() {
         System.out.println("Bulmak Istediginiz Doktorun Unvanini Giriniz:\n\t=> Allergist\n\t=> Norolog\n\t" +
                 "=> Genel Cerrah\n\t=> Cocuk Doktoru\n\t=> Dahiliye Uzmanı\n\t=> Kardiolog");
         //scan.nextLine();
@@ -104,7 +106,7 @@ public class DoktorServisi implements Service {
         System.out.println("------------------------------------------------------");
         boolean varMi = false;
 
-        for (Doktor w : doktorList) {
+        for (Doctor w : doctorList) {
             if (w.getUnvan().equalsIgnoreCase(unvan)) {
                 System.out.printf("%-13s | %-15s | %-15s\n", w.getIsim(), w.getSoyIsim(), w.getUnvan());
                 varMi = true;
@@ -123,32 +125,27 @@ public class DoktorServisi implements Service {
         System.out.println("---------- HASTANEDE BULUNAN DOKTORLARİMİZ -----------");
         System.out.printf("%-13s | %-15s | %-15s\n", "DOKTOR İSİM", "DOKTOR SOYİSİM", "DOKTOR UNVAN");
         System.out.println("------------------------------------------------------");
-        for (Doktor w : doktorList) {
+        for (Doctor w : doctorList) {
             System.out.printf("%-13s | %-15s | %-15s\n", w.getIsim(), w.getSoyIsim(), w.getUnvan());
-
-
         }
-
-
     }
 
-    public Doktor doktorBul(String unvan) {
-        Doktor doktor = new Doktor();
-        for (int i = 0; i < hastane.unvanlar.size(); i++) {
-            if (hastane.unvanlar.get(i).equals(unvan)) {
-                doktor.setIsim(hastane.doctorIsimleri.get(i));
-                doktor.setSoyIsim(hastane.doctorSoyIsimleri.get(i));
-                doktor.setUnvan(hastane.unvanlar.get(i));
+    public Doctor findDoctor(String unvan) {
+        Doctor doctor = new Doctor();
+        for (int i = 0; i < hospital.unvanlar.size(); i++) {
+            if (hospital.unvanlar.get(i).equals(unvan)) {
+                doctor.setIsim(hospital.doctorIsimleri.get(i));
+                doctor.setSoyIsim(hospital.doctorSoyIsimleri.get(i));
+                doctor.setUnvan(hospital.unvanlar.get(i));
                 break;
-
             }
         }
-        return doktor;
+        return doctor;
     }
 
-    public void firstListDoktor() {
-        for (String w : hastane.unvanlar) {
-            doktorList.add(doktorBul(w));
+    public void createFirstDoctorList() {
+        for (String w : hospital.unvanlar) {
+            doctorList.add(findDoctor(w));
         }
     }
 }

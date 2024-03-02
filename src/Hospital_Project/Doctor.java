@@ -1,19 +1,16 @@
-package Hastane_projesi;
+package Hospital_Project;
 
-public class Doktor extends Person {
+public class Doctor extends Person {
     String unvan;
-
-
-
-    public Doktor() {
+    public Doctor() {
     }
 
-    public Doktor(String isim, String soyIsim, String unvan) {
+    public Doctor(String isim, String soyIsim, String unvan) {
         super(isim, soyIsim);
         this.unvan = unvan;
     }
 
-    public Doktor(String unvan) {
+    public Doctor(String unvan) {
         this.unvan = unvan;
     }
 
