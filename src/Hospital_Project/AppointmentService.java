@@ -5,8 +5,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-import static Hospital_Project.HospitalService.hospitalService;
-import static Hospital_Project.HospitalService.slowPrint;
+import static Hospital_Project.HospitalService.*;
 
 
 public class AppointmentService {
@@ -44,9 +43,8 @@ public class AppointmentService {
     }
 
     public void haftalikRandevuTableList(TreeMap<String, LinkedList<LocalTime>> treeMap) throws IOException, InterruptedException {
-        Scanner inp = new Scanner(System.in);
         System.out.println("Lutfen Randevu Almak Istediginiz Bolumun Ismini Giriniz: \n\t=> Alerji\n\t=> Noroloji\n\t=> Genel Cerrahi\n\t=> Cocuk Hastaliklari\n\t=> Dahiliye\n\t=> Kardioloji");
-        String select = inp.nextLine().toLowerCase();
+        String select = scan.nextLine().toLowerCase();
         Set<Map.Entry<String, LinkedList<LocalTime>>> myEntrys = treeMap.entrySet();
 
         switch (select) {
@@ -74,11 +72,11 @@ public class AppointmentService {
         while (devamMi) {
             devamMi = false;
             System.out.println("Lütfen randevu almak istediğiniz günü giriniz:");
-            gun = inp.next();
-            inp.nextLine();
+            gun = scan.next();
+            scan.nextLine();
             System.out.println("Lütfen randevu almak istediğiniz saati giriniz:\n\t=> DIKKAT! Saati \"hh:mm\" formatında giriniz!");
             try {
-                saat = LocalTime.parse(inp.nextLine(), DateTimeFormatter.ofPattern("HH:mm"));
+                saat = LocalTime.parse(scan.nextLine(), DateTimeFormatter.ofPattern("HH:mm"));
             } catch (Exception e) {
                 System.err.print("Geçersiz saat formatı!\n\t=> Saati \"hh:mm\" formatında giriniz!");
                 System.out.println();
