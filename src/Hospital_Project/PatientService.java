@@ -6,8 +6,8 @@ import java.util.LinkedList;
 import static Hospital_Project.HospitalService.*;
 
 public class PatientService {
-    static LinkedList<Patient> patientList = new LinkedList<>();
-    static LinkedList<Case> patientCaseList = new LinkedList<>();
+  private LinkedList<Patient> patientList = new LinkedList<>();
+  private LinkedList<Case> patientCaseList = new LinkedList<>();
 
     AppointmentService appointmentService = new AppointmentService();
 

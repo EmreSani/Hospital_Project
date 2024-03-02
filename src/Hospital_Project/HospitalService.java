@@ -123,6 +123,8 @@ public class HospitalService {
 
         System.out.println();
         slowPrint("\033[32m======================================= DEV TEAM 02 HASTANESI =======================================\033[0m\n", 20);
+        System.out.println("Programdan çıkılıyor...");
+        System.exit(0);
     }
 
     public static void slowPrint(String message, int delay) {

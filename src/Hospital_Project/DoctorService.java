@@ -7,7 +7,7 @@ import java.util.Scanner;
 import static Hospital_Project.HospitalService.*;
 
 public class DoctorService {
-    static LinkedList<Doctor> doctorList = new LinkedList<>();
+   private static LinkedList<Doctor> doctorList = new LinkedList<>();
 
     public void doctorEntryMenu() throws InterruptedException, IOException {
 
@@ -71,7 +71,6 @@ public class DoctorService {
 
     public void removeDoctor() {
         listDoctors();
-        Scanner scan = new Scanner(System.in);
         System.out.println("Silmek istediginiz doktor ismini giriniz");
         String doktorName = scan.nextLine().trim();
         System.out.println("Silmek istediginiz doktor soyadini giriniz");
