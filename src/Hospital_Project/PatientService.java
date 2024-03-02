@@ -8,6 +8,9 @@ import static Hospital_Project.HospitalService.*;
 public class PatientService {
     static LinkedList<Patient> patientList = new LinkedList<>();
     static LinkedList<Case> patientCaseList = new LinkedList<>();
+
+    AppointmentService appointmentService = new AppointmentService();
+
     public void patientEntryMenu() throws InterruptedException, IOException {
 
         int secim = -1;
@@ -29,7 +32,7 @@ public class PatientService {
                     break;
                 case 2:
                     doctorService.findDoctorByTitle();
-                    Thread.sleep(3000);
+                    // Thread.sleep(3000);
                     break;
                 case 3:
                     System.out.println("DURUMUNUZU ÖĞRENMEK İÇİN HASTALIĞINIZI GİRİNİZ...");
@@ -37,11 +40,11 @@ public class PatientService {
                     System.out.println(findPatientCase(durum));
                     break;
                 case 4:
-                    // randevu al
+                    appointmentService.haftalikRandevuTableList(appointmentService.haftalikRandevuTable());
                     break;
                 case 0:
                     slowPrint("ANA MENUYE YÖNLENDİRİLİYORSUNUZ...\n", 20);
-                    hospitalService.start();
+                    //      hospitalService.start();
                     break;
                 default:
                     System.out.println("HATALI GİRİŞ, TEKRAR DENEYİNİZ...\n");
@@ -71,8 +74,8 @@ public class PatientService {
         Patient patient = new Patient(hastaAdi, hastaSoyadi, hastaId, hastaCase);
         patientList.add(patient);
         patientCaseList.add(hastaCase);
+        System.out.println(patient.getIsim() + patient.getSoyIsim() + " isimli hasta sisteme başarıyla eklenmiştir...");
         listPatients();
-
     }
 
     public void removePatient() {
@@ -90,7 +93,7 @@ public class PatientService {
         }
         for (Patient w : patientList) {
             if (w.getHastaID() == hastaId) {
-                System.out.println(w.getIsim()+" "+w.getSoyIsim()+ " isimli hasta sistemden basariyla silinmistir...");
+                System.out.println(w.getIsim() + " " + w.getSoyIsim() + " isimli hasta sistemden basariyla silinmistir...");
                 sildiMi = true;
                 patientList.remove(w);
                 break;
@@ -161,6 +164,7 @@ public class PatientService {
 
         return hastaDurumu;
     }
+
     public void createFirstPatientList() {
         for (String w : hospital.durumlar) {
             patientList.add(findPatient(w));

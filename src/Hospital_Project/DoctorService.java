@@ -15,13 +15,12 @@ public class DoctorService {
         do {
             System.out.println("=========================================");
             System.out.println("LUTFEN YAPMAK ISTEDIGINIZ ISLEMI SECINIZ:\n\t=> 1-DOKTORLARI LISTELE\n\t" +
-                    "=> 2-UNVANDAN DOKTOR BULMA\n\t=> 3-HASTA BULMA\n\t=> 4-HASTALARI LISTELE \n\t=>0-ANAMENU");
+                    "=> 2-UNVANDAN DOKTOR BULMA\n\t=> 3-HASTA BULMA\n\t=> 4-HASTALARI LISTELE \n\t=> 0-ANAMENU");
             System.out.println("=========================================");
             try {
                 secim = scan.nextInt();
                 scan.nextLine();//dummy
             } catch (Exception e) {
-
                 System.out.println("\"LUTFEN SIZE SUNULAN SECENEKLERIN DISINDA VERI GIRISI YAPMAYINIZ!\"");
                 continue;
             }
@@ -40,11 +39,10 @@ public class DoctorService {
                     break;
                 case 4:
                     patientService.listPatients();
-                    //
                     break;
                 case 0:
                     slowPrint("ANA MENUYE YÖNLENDİRİLİYORSUNUZ...\n", 20);
-                    hospitalService.start();
+                 // hospitalService.start();
                     break;
                 default:
                     System.out.println("HATALI GİRİŞ, TEKRAR DENEYİNİZ...\n");
@@ -64,6 +62,7 @@ public class DoctorService {
         String doktorUnvan = scan.nextLine();
         Doctor doctor = new Doctor(doktorAdi, doktorSoyadi, doktorUnvan);
         doctorList.add(doctor);
+        System.out.println(doctor.getIsim() + doctor.getSoyIsim() + " isimli doktor sisteme başarıyla eklenmiştir...");
         listDoctors();
         // Doktor objesini istersek bir listeye ekleyebilir veya başka bir şekilde saklayabiliriz
 
@@ -82,7 +81,7 @@ public class DoctorService {
         boolean isDeleted = false;
         for (Doctor w : doctorList) {
             if (w.getIsim().equalsIgnoreCase(doktorName) && w.getSoyIsim().equalsIgnoreCase(doktorSurname)) {
-                System.out.println(w.getIsim()+" "+w.getSoyIsim()+ " isimli doktor sistemden basariyla silinmistir...");
+                System.out.println(w.getIsim() + " " + w.getSoyIsim() + " isimli doktor sistemden basariyla silinmistir...");
                 doctorList.remove(w);
                 isDeleted = true;
                 break;

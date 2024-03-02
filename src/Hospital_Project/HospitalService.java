@@ -14,16 +14,16 @@ public class HospitalService {
     public static PatientService patientService = new PatientService();
 
     public void start() throws InterruptedException, IOException {
-        //   slowPrint("\033[34m============== DEV TEAM 02 HASTANESINE HOSGELDİNİZ ================\033[0m\n", 20);
-        //   slowPrint("\033[34m================ SAGLIGINIZ BİZİM ICIN ONEMLIDIR ==================\033[0m\n", 20);
+       //   slowPrint("\033[34m============== DEV TEAM 02 HASTANESINE HOSGELDİNİZ ================\033[0m\n", 20);
+        //  slowPrint("\033[34m================ SAGLIGINIZ BIZIM ICIN ONEMLIDIR ==================\033[0m\n", 20);
         int secim = -1;
-        do {
+        while (secim != 0) {
             System.out.println("Lütfen giriş yapmak istediğiniz menü kodunu giriniz..\n\n" +
                     "1-HASTANE YÖNETİMİ GİRİŞİ\n" +
                     "2-DOKTOR GİRİŞİ\n" +
                     "3-HASTA GİRİŞİ\n" +
                     "4-HASTANE KADROMUZ\n" +
-                    "5-ÇIKIŞ");
+                    "0-ÇIKIŞ");
             try {
                 secim = scan.nextInt();
             } catch (Exception e) {
@@ -44,28 +44,30 @@ public class HospitalService {
                 case 4:
                     contactUs();
                     break;
-                case 5:
-                    exit();
-                    secim=0;
-                    break;
+                case 0:
+                  exit();
+                  break;
                 default:
                     System.out.println("HATALI GIRIS, TEKRAR DENEYINIZ!");
             }
-        } while (secim != 0);
+
+        }
+        scan.close();
     }
 
-    private void hospitalServiceMenu() throws IOException, InterruptedException {
+    private void hospitalServiceMenu() {
         int secim = -1;
+        scan.nextLine();
         do {
             System.out.println("=========================================");
             System.out.println("LUTFEN YAPMAK ISTEDIGINIZ ISLEMI SECINIZ:\n\t=> 1-DOKTOR EKLE\n\t=> 2-DOKTORLARI LISTELE\n\t" +
-                    "=> 3-UNVANDAN DOKTOR BULMA\n\t=> 4-DOKTOR SIL\n\t=> 5-HASTA EKLE\n\t=> 6-HASTA BUL\n\t=> 7-HASTA LISTELE\n\t=> 8-HASTA SIL\n\t=>0-ANAMENU");
+                    "=> 3-UNVANDAN DOKTOR BULMA\n\t=> 4-DOKTOR SIL\n\t=> 5-HASTA EKLE\n\t=> 6-HASTA BUL\n\t=> 7-HASTA LISTELE\n\t=> 8-HASTA SIL\n\t=> 0-ANAMENU");
             System.out.println("=========================================");
             try {
                 secim = scan.nextInt();
                 scan.nextLine();//dummy
             } catch (Exception e) {
-             // scan.nextLine();//dummy
+                scan.nextLine();//dummy
                 System.out.println("\"LUTFEN SIZE SUNULAN SECENEKLERIN DISINDA VERI GIRISI YAPMAYINIZ!\"");
                 continue;
             }
@@ -100,7 +102,6 @@ public class HospitalService {
                     break;
                 case 0:
                     slowPrint("ANA MENUYE YÖNLENDİRİLİYORSUNUZ...\n", 20);
-                    start();
                     break;
                 default:
                     System.out.println("HATALI GİRİŞ, TEKRAR DENEYİNİZ...\n");
@@ -108,14 +109,16 @@ public class HospitalService {
         } while (secim != 0);
     }
 
-    public void contactUs() throws IOException, InterruptedException {
+    public void contactUs() throws IOException, InterruptedException{
         Files.lines(Paths.get("src/Hospital_Project/Yonetim.txt")).forEach(System.out::println);
-
         start();
     }
 
     public static void exit() {
-        System.out.println("Hastanemizi tercih ettiğiniz için teşekkürler. \n\t" + "*".repeat(10) + " SAĞLICAKLA KALIN " + "*".repeat(10));
+        slowPrint("\033[32m================== BIZI TERCIH ETTIGINIZ ICIN TESEKKUR EDER SAGLIKLI GUNLER DILERIZ =================\033[0m\n", 20);
+
+        System.out.println();
+        slowPrint("\033[32m======================================= DEV TEAM 02 HASTANESI =======================================\033[0m\n", 20);
     }
 
     public static void slowPrint(String message, int delay) {
