@@ -2,7 +2,6 @@ package Hospital_Project;
 
 import java.io.IOException;
 import java.util.LinkedList;
-import java.util.Scanner;
 
 import static Hospital_Project.HospitalService.*;
 

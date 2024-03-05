@@ -5,8 +5,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
-import static java.util.Scanner.*;
-
 public class HospitalService {
     static Scanner scan = new Scanner(System.in);
 
