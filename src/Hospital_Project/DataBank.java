@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataBank {
-    List<String> doctorIsimleri = new ArrayList<>();
-    List<String> doctorSoyIsimleri = new ArrayList<>();
-    List<String> unvanlar = new ArrayList<>();
-    List<String> hastaIsimleri = new ArrayList<>();
-    List<String> hastaSoyIsimleri = new ArrayList<>();
-    List<String> durumlar = new ArrayList<>();
-    List<Integer> hastaIDleri = new ArrayList<>();
+   protected List<String> doctorIsimleri = new ArrayList<>();
+   protected List<String> doctorSoyIsimleri = new ArrayList<>();
+   protected List<String> unvanlar = new ArrayList<>();
+   protected List<String> hastaIsimleri = new ArrayList<>();
+   protected List<String> hastaSoyIsimleri = new ArrayList<>();
+   protected List<String> durumlar = new ArrayList<>();
+   protected List<Integer> hastaIDleri = new ArrayList<>();
 
     {
         // Verilerin başlatılması

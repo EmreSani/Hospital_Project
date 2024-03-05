@@ -6,10 +6,9 @@ import java.util.LinkedList;
 import static Hospital_Project.HospitalService.*;
 
 public class PatientService {
-  private LinkedList<Patient> patientList = new LinkedList<>();
-  private LinkedList<Case> patientCaseList = new LinkedList<>();
-
-    AppointmentService appointmentService = new AppointmentService();
+  private static final LinkedList<Patient> patientList = new LinkedList<>();
+  private static final LinkedList<Case> patientCaseList = new LinkedList<>();
+  private final AppointmentService appointmentService = new AppointmentService();
 
     public void patientEntryMenu() throws InterruptedException, IOException {
 
@@ -45,7 +44,7 @@ public class PatientService {
                     break;
                 case 0:
                     slowPrint("ANA MENUYE YÖNLENDİRİLİYORSUNUZ...\n", 20);
-                          hospitalService.start();
+                    hospitalService.start();
                     break;
                 default:
                     System.out.println("HATALI GİRİŞ, TEKRAR DENEYİNİZ...\n");

@@ -14,10 +14,8 @@ public class Case {
 
     @Override
     public String toString() {
-        return "Durum{" +
-                "Hasta Durumu:'" + actualCase + '\'' +
-                ", aciliyet=" + isEmergency +
-                '}';
+        return "Hastalık Durumunuz:'" + actualCase + '\'' +
+                ", aciliyet=" + isEmergency;
     }
 
     public String getActualCase() {

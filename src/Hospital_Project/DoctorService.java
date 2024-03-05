@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import static Hospital_Project.HospitalService.*;
 
 public class DoctorService {
-   private static LinkedList<Doctor> doctorList = new LinkedList<>();
+   private static final LinkedList<Doctor> doctorList = new LinkedList<>();
 
     public void doctorEntryMenu() throws InterruptedException, IOException {
 
@@ -75,7 +75,6 @@ public class DoctorService {
         String doktorName = scan.nextLine().trim();
         System.out.println("Silmek istediginiz doktor soyadini giriniz");
         String doktorSurname = scan.nextLine().trim();
-        System.out.println(doctorList);
 
         boolean isDeleted = false;
         for (Doctor w : doctorList) {
