@@ -63,6 +63,13 @@ public class DataBank {
         hastaIDleri.add(555);
         hastaIDleri.add(666);
     }
+
+
+    //static instance block tercihi?
+    //yeni oluşturduğumuz listeyi veribankasındaki eski listeye ekleme durumu
+
+
+
     // Doktor Silme Metodu
 //  public static void removeDoctor(int index) {
 //      if (index >= 0 && index < doctorIsimleri.size()) {

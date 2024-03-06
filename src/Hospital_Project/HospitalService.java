@@ -56,8 +56,17 @@ public class HospitalService {
         scan.nextLine();
         do {
             System.out.println("=========================================");
-            System.out.println("LUTFEN YAPMAK ISTEDIGINIZ ISLEMI SECINIZ:\n\t=> 1-DOKTOR EKLE\n\t=> 2-DOKTORLARI LISTELE\n\t" +
-                    "=> 3-UNVANDAN DOKTOR BULMA\n\t=> 4-DOKTOR SIL\n\t=> 5-HASTA EKLE\n\t=> 6-HASTA BUL\n\t=> 7-HASTA LISTELE\n\t=> 8-HASTA SIL\n\t=> 0-ANAMENU");
+            System.out.println("""
+                    LUTFEN YAPMAK ISTEDIGINIZ ISLEMI SECINIZ:
+                    \t=> 1-DOKTOR EKLE
+                    \t=> 2-DOKTORLARI LISTELE
+                    \t=> 3-UNVANDAN DOKTOR BULMA
+                    \t=> 4-DOKTOR SIL
+                    \t=> 5-HASTA EKLE
+                    \t=> 6-HASTA BUL
+                    \t=> 7-HASTA LISTELE
+                    \t=> 8-HASTA SIL
+                    \t=> 0-ANAMENU""");
             System.out.println("=========================================");
             try {
                 secim = scan.nextInt();
