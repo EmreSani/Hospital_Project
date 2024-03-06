@@ -13,8 +13,13 @@ public class DoctorService {
         int secim = -1;
         do {
             System.out.println("=========================================");
-            System.out.println("LUTFEN YAPMAK ISTEDIGINIZ ISLEMI SECINIZ:\n\t=> 1-DOKTORLARI LISTELE\n\t" +
-                    "=> 2-UNVANDAN DOKTOR BULMA\n\t=> 3-HASTA BULMA\n\t=> 4-HASTALARI LISTELE \n\t=> 0-ANAMENU");
+            System.out.println("""
+                    LUTFEN YAPMAK ISTEDIGINIZ ISLEMI SECINIZ:
+                    \t=> 1-DOKTORLARI LISTELE
+                    \t=> 2-UNVANDAN DOKTOR BULMA
+                    \t=> 3-HASTA BULMA
+                    \t=> 4-HASTALARI LISTELE\s
+                    \t=> 0-ANAMENU""");
             System.out.println("=========================================");
             try {
                 secim = scan.nextInt();

@@ -15,8 +15,13 @@ public class PatientService {
         int secim = -1;
         do {
             System.out.println("=========================================");
-            System.out.println("LUTFEN YAPMAK ISTEDIGINIZ ISLEMI SECINIZ:\n\t=> 1-DOKTORLARI LİSTELE\n\t=> 2-DOKTOR BUL\n\t" +
-                    "=> 3-DURUMUNU OGREN\n\t=> 4-RANDEVU AL\n\t=> 0-ANA MENU");
+            System.out.println("""
+                    LUTFEN YAPMAK ISTEDIGINIZ ISLEMI SECINIZ:
+                    \t=> 1-DOKTORLARI LİSTELE
+                    \t=> 2-DOKTOR BUL
+                    \t=> 3-DURUMUNU OGREN
+                    \t=> 4-RANDEVU AL
+                    \t=> 0-ANA MENU""");
             System.out.println("=========================================");
             try {
                 secim = scan.nextInt();

@@ -12,16 +12,19 @@ public class HospitalService {
     public static PatientService patientService = new PatientService();
 
     public void start() throws InterruptedException, IOException {
-        //   slowPrint("\033[34m============== DEV TEAM 02 HASTANESINE HOSGELDİNİZ ================\033[0m\n", 20);
-        //  slowPrint("\033[34m================ SAGLIGINIZ BIZIM ICIN ONEMLIDIR ==================\033[0m\n", 20);
+
         int secim = -1;
 
-        System.out.println("Lütfen giriş yapmak istediğiniz menü kodunu giriniz..\n\n" +
-                "1-HASTANE YÖNETİMİ GİRİŞİ\n" +
-                "2-DOKTOR GİRİŞİ\n" +
-                "3-HASTA GİRİŞİ\n" +
-                "4-HASTANE KADROMUZ\n" +
-                "0-ÇIKIŞ");
+     do {
+         System.out.println("""
+                 Lütfen giriş yapmak istediğiniz menü kodunu giriniz..
+
+                 1-HASTANE YÖNETİCİSİ GİRİŞİ
+                 2-DOKTOR GİRİŞİ
+                 3-HASTA GİRİŞİ
+                 4-HASTANE KADROMUZ
+                 0-ÇIKIŞ""");
+
         try {
             secim = scan.nextInt();
         } catch (Exception e) {
@@ -47,6 +50,7 @@ public class HospitalService {
             default:
                 System.out.println("HATALI GIRIS, TEKRAR DENEYINIZ!");
         }
+     } while (secim!=0);
 
     }
 
@@ -98,7 +102,6 @@ public class HospitalService {
                 case 6:
                     System.out.println("BULMAK İSTEDİĞİNİZ HASTANIN DURUMUNU GİRİNİZ...");
                     String durum = scan.nextLine().trim();
-                    //System.out.println(hastaBul(durum));
                     patientService.listPatientByCase(durum);
                     break;
                 case 7:
@@ -142,6 +145,9 @@ public class HospitalService {
     }
 
     static {
+        slowPrint("\033[34m============== DEV TEAM 02 HASTANESINE HOSGELDİNİZ ================\033[0m\n", 10);
+        slowPrint("\033[34m================ SAGLIGINIZ BIZIM ICIN ONEMLIDIR ==================\033[0m\n", 10);
+
         patientService.createFirstPatientList();
         doctorService.createFirstDoctorList();
     }
