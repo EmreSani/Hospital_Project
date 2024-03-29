@@ -36,10 +36,10 @@ public class HospitalService {
                 hospitalService.hospitalServiceMenu();
                 break;
             case 2:
-                doctorService.doctorEntryMenu();
+                doctorService.entryMenu();
                 break;
             case 3:
-                patientService.patientEntryMenu();
+                patientService.entryMenu();
                 break;
             case 4:
                 contactUs();
@@ -84,20 +84,20 @@ public class HospitalService {
             }
             switch (secim) {
                 case 1:
-                    doctorService.addDoctor(); //
+                    doctorService.add(); //
                     break;
                 case 2:
-                    doctorService.listDoctors();
+                    doctorService.list();
                     break;
                 case 3:
                     doctorService.findDoctorByTitle();
                     break;
                 case 4:
-                    doctorService.removeDoctor();
+                    doctorService.remove();
                     //
                     break;
                 case 5:
-                    patientService.addPatient();
+                    patientService.add();
                     break;
                 case 6:
                     System.out.println("BULMAK İSTEDİĞİNİZ HASTANIN DURUMUNU GİRİNİZ...");
@@ -105,10 +105,10 @@ public class HospitalService {
                     patientService.listPatientByCase(durum);
                     break;
                 case 7:
-                    patientService.listPatients();
+                    patientService.list();
                     break;
                 case 8:
-                    patientService.removePatient();
+                    patientService.remove();
                     break;
                 case 0:
                     slowPrint("ANA MENUYE YÖNLENDİRİLİYORSUNUZ...\n", 20);
@@ -148,8 +148,8 @@ public class HospitalService {
         slowPrint("\033[34m============== DEV TEAM 02 HASTANESINE HOSGELDİNİZ ================\033[0m\n", 10);
         slowPrint("\033[34m================ SAGLIGINIZ BIZIM ICIN ONEMLIDIR ==================\033[0m\n", 10);
 
-        patientService.createFirstPatientList();
-        doctorService.createFirstDoctorList();
+        patientService.createList();
+        doctorService.createList();
     }
 
 }

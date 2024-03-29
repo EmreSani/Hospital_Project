@@ -5,12 +5,12 @@ import java.util.LinkedList;
 
 import static Hospital_Project.HospitalService.*;
 
-public class PatientService {
+public class PatientService implements Methods{
   private static final LinkedList<Patient> patientList = new LinkedList<>();
   private static final LinkedList<Case> patientCaseList = new LinkedList<>();
   private final AppointmentService appointmentService = new AppointmentService();
 
-    public void patientEntryMenu() throws InterruptedException, IOException {
+    public void entryMenu() throws InterruptedException, IOException {
 
         int secim = -1;
         do {
@@ -33,7 +33,7 @@ public class PatientService {
             }
             switch (secim) {
                 case 1:
-                    doctorService.listDoctors();
+                    doctorService.list();
                     break;
                 case 2:
                     doctorService.findDoctorByTitle();
@@ -57,7 +57,8 @@ public class PatientService {
         } while (secim != 0);
     }
 
-    public void addPatient() {
+    @Override
+    public void add() {
         System.out.println("Eklemek istediginiz hastanin ADINI giriniz");
         String hastaAdi = scan.nextLine();
         System.out.println("Eklemek istediginiz hastanin SOYADINI giriniz");
@@ -80,11 +81,12 @@ public class PatientService {
         patientList.add(patient);
         patientCaseList.add(hastaCase);
         System.out.println(patient.getIsim() + patient.getSoyIsim() + " isimli hasta sisteme başarıyla eklenmiştir...");
-        listPatients();
+        list();
     }
 
-    public void removePatient() {
-        listPatients();
+    @Override
+    public void remove() {
+        list();
         boolean sildiMi = false;
         System.out.println("Silmek Istediginiz Hastanin Id sini giriniz.");
         int hastaId = 0;
@@ -94,7 +96,7 @@ public class PatientService {
 
         } catch (Exception e) {
             System.out.println("GECERSİZ ID");
-            removePatient();
+            remove();
         }
         for (Patient w : patientList) {
             if (w.getHastaID() == hastaId) {
@@ -107,11 +109,11 @@ public class PatientService {
         if (!sildiMi) {
             System.out.println("SİLMEK İSTEDİGİNİZ HASTA LİSTEMİZDE BULUNMAMAKTADIR!");
         }
-        listPatients();
+        list();
     }
 
-
-    public void listPatients() {
+@Override
+    public void list() {
         System.out.println("---------------------------------------------------------------------------");
         System.out.println("----------------------- HASTANEDE BULUNAN HASTALARIMIZ --------------------");
         System.out.printf("%-10s | %-10s | %-15s | %-20s\n", "HASTA ID", "HASTA ISIM", "HASTA SOYISIM", "HASTA DURUM");
@@ -170,7 +172,8 @@ public class PatientService {
         return hastaDurumu;
     }
 
-    public void createFirstPatientList() {
+    @Override
+    public void createList() {
         for (String w : hospital.durumlar) {
             patientList.add(findPatient(w));
             patientCaseList.add(findPatientCase(w.toLowerCase()));

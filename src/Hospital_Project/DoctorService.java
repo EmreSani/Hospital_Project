@@ -5,10 +5,11 @@ import java.util.LinkedList;
 
 import static Hospital_Project.HospitalService.*;
 
-public class DoctorService {
+public class DoctorService implements Methods{
    private static final LinkedList<Doctor> doctorList = new LinkedList<>();
 
-    public void doctorEntryMenu() throws InterruptedException, IOException {
+   @Override
+    public void entryMenu() throws InterruptedException, IOException {
 
         int secim = -1;
         do {
@@ -30,7 +31,7 @@ public class DoctorService {
             }
             switch (secim) {
                 case 1:
-                    listDoctors();
+                    list();
                     break;
                 case 2:
                     findDoctorByTitle();
@@ -43,7 +44,7 @@ public class DoctorService {
                     //o durumda bir hasta yoksa hicbir sey dondurmuyor
                     break;
                 case 4:
-                    patientService.listPatients();
+                    patientService.list();
                     break;
                 case 0:
                     slowPrint("ANA MENUYE YÖNLENDİRİLİYORSUNUZ...\n", 20);
@@ -56,7 +57,8 @@ public class DoctorService {
 
     }
 
-    public void addDoctor() {
+    @Override
+    public void add() {
         // Doktor Ekleme Metodu
         System.out.println("Eklemek istediginiz doktor ismini giriniz");
         String doktorAdi = scan.nextLine();
@@ -68,14 +70,15 @@ public class DoctorService {
         Doctor doctor = new Doctor(doktorAdi, doktorSoyadi, doktorUnvan);
         doctorList.add(doctor);
         System.out.println(doctor.getIsim() + " " +doctor.getSoyIsim() + " isimli doktor sisteme başarıyla eklenmiştir...");
-        listDoctors();
+        list();
         // Doktor objesini istersek bir listeye ekleyebilir veya başka bir şekilde saklayabiliriz
 
     }
 
 
-    public void removeDoctor() {
-        listDoctors();
+    @Override
+    public void remove() {
+        list();
         System.out.println("Silmek istediginiz doktor ismini giriniz");
         String doktorName = scan.nextLine().trim();
         System.out.println("Silmek istediginiz doktor soyadini giriniz");
@@ -93,7 +96,7 @@ public class DoctorService {
         if (!isDeleted) {
             System.out.println("SİLMEK İSTEDİGİNİZ DOKTOR LİSTEMİZDE BULUNMAMAKTADIR");
         }
-        listDoctors();
+        list();
     }
 
     public void findDoctorByTitle() {
@@ -122,7 +125,7 @@ public class DoctorService {
 
     }
 
-    public void listDoctors() {
+    public void list() {
         System.out.println("------------------------------------------------------");
         System.out.println("---------- HASTANEDE BULUNAN DOKTORLARİMİZ -----------");
         System.out.printf("%-13s | %-15s | %-15s\n", "DOKTOR İSİM", "DOKTOR SOYİSİM", "DOKTOR UNVAN");
@@ -145,7 +148,7 @@ public class DoctorService {
         return doctor;
     }
 
-    public void createFirstDoctorList() {
+    public void createList() {
         for (String w : hospital.unvanlar) {
             doctorList.add(findDoctor(w));
         }
