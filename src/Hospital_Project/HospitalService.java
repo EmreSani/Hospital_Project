@@ -3,6 +3,9 @@ package Hospital_Project;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Scanner;
 public class HospitalService {
     static Scanner scan = new Scanner(System.in);
@@ -11,7 +14,9 @@ public class HospitalService {
     public static DoctorService doctorService = new DoctorService();
     public static PatientService patientService = new PatientService();
 
-    public void start() throws InterruptedException, IOException {
+    public void start() throws InterruptedException, IOException, SQLException {
+
+        Connection con = DriverManager.getConnection("jdbc://postgresql:localhost:5432/hospital_dev02", "dev02", "123456");
 
         int secim = -1;
 
@@ -55,7 +60,7 @@ public class HospitalService {
     }
 
 
-    private void hospitalServiceMenu() throws IllegalStateException, IOException, InterruptedException {
+    private void hospitalServiceMenu() throws IllegalStateException, IOException, InterruptedException, SQLException {
         int secim = -1;
         scan.nextLine();
         do {
@@ -120,7 +125,7 @@ public class HospitalService {
         } while (secim != 0);
     }
 
-    public void contactUs() throws IOException, InterruptedException, IllegalStateException {
+    public void contactUs() throws IOException, InterruptedException, IllegalStateException, SQLException {
         Files.lines(Paths.get("src/Hospital_Project/Yonetim.txt")).forEach(System.out::println);
         start();
     }

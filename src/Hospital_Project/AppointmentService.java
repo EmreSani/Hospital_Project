@@ -1,6 +1,7 @@
 package Hospital_Project;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -42,7 +43,7 @@ public class AppointmentService {
         return treeHaftalikRandevuTable;
     }
 
-    public void haftalikRandevuTableList(TreeMap<String, LinkedList<LocalTime>> treeMap) throws IOException, InterruptedException {
+    public void haftalikRandevuTableList(TreeMap<String, LinkedList<LocalTime>> treeMap) throws IOException, InterruptedException, SQLException {
         System.out.println("Lutfen Randevu Almak Istediginiz Bolumun Ismini Giriniz: \n\t=> Alerji\n\t=> Noroloji\n\t=> Genel Cerrahi\n\t=> Cocuk Hastaliklari\n\t=> Dahiliye\n\t=> Kardioloji");
         String select = scan.nextLine().toLowerCase();
         Set<Map.Entry<String, LinkedList<LocalTime>>> myEntrys = treeMap.entrySet();

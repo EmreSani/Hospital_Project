@@ -1,6 +1,7 @@
 package Hospital_Project;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.LinkedList;
 
 import static Hospital_Project.HospitalService.*;
@@ -9,7 +10,7 @@ public class DoctorService implements Methods{
    private static final LinkedList<Doctor> doctorList = new LinkedList<>();
 
    @Override
-    public void entryMenu() throws InterruptedException, IOException {
+    public void entryMenu() throws InterruptedException, IOException, SQLException {
 
         int secim = -1;
         do {

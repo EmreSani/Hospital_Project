@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataBank {
-   protected List<String> doctorIsimleri = new ArrayList<>();
-   protected List<String> doctorSoyIsimleri = new ArrayList<>();
-   protected List<String> unvanlar = new ArrayList<>();
-   protected List<String> hastaIsimleri = new ArrayList<>();
-   protected List<String> hastaSoyIsimleri = new ArrayList<>();
-   protected List<String> durumlar = new ArrayList<>();
-   protected List<Integer> hastaIDleri = new ArrayList<>();
+ static protected List<String> doctorIsimleri = new ArrayList<>();
+ static protected List<String> doctorSoyIsimleri = new ArrayList<>();
+ static protected List<String> unvanlar = new ArrayList<>();
+ static protected List<String> hastaIsimleri = new ArrayList<>();
+ static protected List<String> hastaSoyIsimleri = new ArrayList<>();
+ static protected List<String> durumlar = new ArrayList<>();
+ static protected List<Integer> hastaIDleri = new ArrayList<>();
 
-    {
+   static {
         // Verilerin başlatılması
         doctorIsimleri.add("Nilson");
         doctorIsimleri.add("John");

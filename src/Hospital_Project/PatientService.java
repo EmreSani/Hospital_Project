@@ -1,6 +1,7 @@
 package Hospital_Project;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.LinkedList;
 
 import static Hospital_Project.HospitalService.*;
@@ -10,7 +11,7 @@ public class PatientService implements Methods{
   private static final LinkedList<Case> patientCaseList = new LinkedList<>();
   private final AppointmentService appointmentService = new AppointmentService();
 
-    public void entryMenu() throws InterruptedException, IOException {
+    public void entryMenu() throws InterruptedException, IOException, SQLException {
 
         int secim = -1;
         do {
