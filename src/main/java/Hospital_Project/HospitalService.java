@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Scanner;
 public class HospitalService {
     static Scanner scan = new Scanner(System.in);
@@ -15,8 +16,6 @@ public class HospitalService {
     public static PatientService patientService = new PatientService();
 
     public void start() throws InterruptedException, IOException, SQLException {
-
-        Connection con = DriverManager.getConnection("jdbc://postgresql:localhost:5432/hospital_dev02", "dev02", "123456");
 
         int secim = -1;
 
@@ -155,6 +154,38 @@ public class HospitalService {
 
         patientService.createList();
         doctorService.createList();
+        //bağlantı kaç defa oluşturulmalı ve nerelerde?
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/hospital_dev02","dev02","123456");
+
+            Statement st = con.createStatement();
+
+           boolean sql1 = st.execute("CREATE TABLE IF NOT EXISTS doctors(doctor_id SERIAL PRIMARY KEY, doctor_name VARCHAR(50), doctor_surname VARCHAR(50), " +
+                    "doctor_title VARCHAR(50))");
+
+            System.out.println(sql1);
+
+            String sql2 = "CREATE TABLE IF NOT EXISTS patients(patient_id SERIAL PRIMARY KEY, patient_name VARCHAR(50), patient_surname VARCHAR(50)," +
+                    "patient_case VARCHAR(50))";
+
+            st.execute(sql2);
+
+            String sql3 = "CREATE TABLE IF NOT EXISTS doctors_patients(doctor_id int, patient_id int, " +
+                    "FOREIGN KEY(doctor_id) REFERENCES doctors(doctor_id), FOREIGN KEY(patient_id) REFERENCES patients(patient_id))";
+
+            st.execute(sql3);
+
+
+
+
+
+            st.close();
+            con.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+        }
     }
 
 }
