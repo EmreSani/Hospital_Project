@@ -1,19 +1,15 @@
 package Hospital_Project;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-
 import static Hospital_Project.HospitalService.*;
-import static Hospital_Project.DataBankService.*;
+import static Hospital_Project.DataBankService.con;
 
 public class DoctorService implements Methods{
-
-
    private static final LinkedList<Doctor> doctorList = new LinkedList<>();
 
    @Override
@@ -68,8 +64,6 @@ public class DoctorService implements Methods{
     @Override
     public void add() {
         // Doktor Ekleme Metodu
-
-
         System.out.println("Eklemek istediginiz doktor ismini giriniz");
         String doktorAdi = scan.nextLine();
         System.out.println("Eklemek istediginiz doktor soy ismini giriniz");
@@ -77,21 +71,19 @@ public class DoctorService implements Methods{
         System.out.println("Eklemek İstediginiz doktor Unvanini Giriniz: \n \t=> Allergist\n\t=> Norolog\n\t=> Genel Cerrah\n\t" +
                 "=> Cocuk Doktoru\n\t=> Dahiliye\n\t=> Kardiolog");
         String doktorUnvan = scan.nextLine();
-
-        String addDoctorSql = "INSERT INTO doctors (doctor_name, doctor_surname, doctor_title) VALUES(?,?,?)";
+        String addDoctor = "INSERT INTO doctors (doctor_name, doctor_surname, doctor_title) VALUES(?,?,?)";
         try {
-            PreparedStatement prst = con.prepareStatement(addDoctorSql);
+            PreparedStatement prst = con.prepareStatement(addDoctor);
             prst.setString(1, doktorAdi);
             prst.setString(2, doktorSoyadi);
-            prst.setString(3, doktorUnvan);
+            prst.setString(3,doktorUnvan);
             prst.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
-
-        //  Doctor doctor = new Doctor(doktorAdi, doktorSoyadi, doktorUnvan);
-      //  doctorList.add(doctor);
+//        Doctor doctor = new Doctor(doktorAdi, doktorSoyadi, doktorUnvan);
+//        doctorList.add(doctor);
         System.out.println(doktorAdi + " " +doktorSoyadi + " isimli doktor sisteme başarıyla eklenmiştir...");
         list();
         // Doktor objesini istersek bir listeye ekleyebilir veya başka bir şekilde saklayabiliriz
@@ -102,23 +94,52 @@ public class DoctorService implements Methods{
     @Override
     public void remove() {
         list();
-        System.out.println("Silmek istediginiz doktor ismini giriniz");
-        String doktorName = scan.nextLine().trim();
-        System.out.println("Silmek istediginiz doktor soyadini giriniz");
-        String doktorSurname = scan.nextLine().trim();
+        System.out.println("Silmek istediginiz doktorun idsini giriniz");
+        int doctorId = scan.nextInt();
+//        System.out.println("Silmek istediginiz doktor soyadini giriniz");
+//        String doktorSurname = scan.nextLine().trim();
 
         boolean isDeleted = false;
-        for (Doctor w : doctorList) {
-            if (w.getIsim().equalsIgnoreCase(doktorName) && w.getSoyIsim().equalsIgnoreCase(doktorSurname)) {
-                System.out.println(w.getIsim() + " " + w.getSoyIsim() + " isimli doktor sistemden basariyla silinmistir...");
-                doctorList.remove(w);
-                isDeleted = true;
-                break;
+        int deleted;
+
+        String deleteDoctor = "DELETE FROM doctors WHERE doctor_id= ?";
+        String findDoctor = "SELECT * FROM doctors WHERE doctor_id = ?";
+        try {
+            PreparedStatement prst = con.prepareStatement(deleteDoctor);
+            PreparedStatement prst2 = con.prepareStatement(findDoctor);
+            prst.setInt(1, doctorId);
+            prst2.setInt(1, doctorId);
+
+            ResultSet rs = prst2.executeQuery();
+            while(rs.next()){
+                int id = rs.getInt("doctor_id");
+                String name = rs.getString("doctor_name");
+                System.out.println("Silinen doktor: \n" + id + " " + name);
             }
+
+            deleted = prst.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-        if (!isDeleted) {
-            System.out.println("SİLMEK İSTEDİGİNİZ DOKTOR LİSTEMİZDE BULUNMAMAKTADIR");
+
+        if(deleted==0){
+            System.out.println("ID'si " +doctorId + " olan doktor bulunamadı.");
+        }else{
+            System.out.println("ID'si " +doctorId + " olan doktor başarıyla silindi.");
         }
+
+//        for (Doctor w : doctorList) {
+//            if (w.getIsim().equalsIgnoreCase(doktorName) && w.getSoyIsim().equalsIgnoreCase(doktorSurname)) {
+//                System.out.println(w.getIsim() + " " + w.getSoyIsim() + " isimli doktor sistemden basariyla silinmistir...");
+//                doctorList.remove(w);
+//                isDeleted = true;
+//                break;
+//            }
+//        }
+//        if (!isDeleted) {
+//            System.out.println("SİLMEK İSTEDİGİNİZ DOKTOR LİSTEMİZDE BULUNMAMAKTADIR");
+//        }
         list();
     }
 
@@ -172,7 +193,7 @@ public class DoctorService implements Methods{
     }
 
     public void createList() {
-        for (String w : DataBank.unvanlar) {
+        for (String w : hospital.unvanlar) {
             doctorList.add(findDoctor(w));
         }
     }
