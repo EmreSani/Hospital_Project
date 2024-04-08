@@ -4,16 +4,25 @@ import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+<<<<<<< HEAD
 import java.sql.Statement;
+=======
+>>>>>>> origin/main
 import java.util.LinkedList;
 
 import static Hospital_Project.HospitalService.*;
 import static Hospital_Project.DataBankService.con;
 
 public class DoctorService implements Methods{
+<<<<<<< HEAD
     private static final LinkedList<Doctor> doctorList = new LinkedList<>();
 
     @Override
+=======
+   private static final LinkedList<Doctor> doctorList = new LinkedList<>();
+
+   @Override
+>>>>>>> origin/main
     public void entryMenu() throws InterruptedException, IOException, SQLException {
 
         int secim = -1;
@@ -53,7 +62,11 @@ public class DoctorService implements Methods{
                     break;
                 case 0:
                     slowPrint("ANA MENUYE YÖNLENDİRİLİYORSUNUZ...\n", 20);
+<<<<<<< HEAD
                     hospitalService.start();
+=======
+                  hospitalService.start();
+>>>>>>> origin/main
                     break;
                 default:
                     System.out.println("HATALI GİRİŞ, TEKRAR DENEYİNİZ...\n");
@@ -100,7 +113,11 @@ public class DoctorService implements Methods{
 //        System.out.println("Silmek istediginiz doktor soyadini giriniz");
 //        String doktorSurname = scan.nextLine().trim();
 
+<<<<<<< HEAD
         //boolean isDeleted = false;
+=======
+        boolean isDeleted = false;
+>>>>>>> origin/main
         int deleted;
 
         String deleteDoctor = "DELETE FROM doctors WHERE doctor_id= ?";
@@ -147,6 +164,7 @@ public class DoctorService implements Methods{
     public void findDoctorByTitle() {
         System.out.println("Bulmak Istediginiz Doktorun Unvanini Giriniz:\n\t=> Allergist\n\t=> Norolog\n\t" +
                 "=> Genel Cerrah\n\t=> Cocuk Doktoru\n\t=> Dahiliye Uzmanı\n\t=> Kardiolog");
+<<<<<<< HEAD
         String title = scan.nextLine();
 
         String listDoctor = "SELECT * FROM doctors WHERE doctor_title=?";
@@ -194,6 +212,30 @@ public class DoctorService implements Methods{
         System.out.println("------------------------------------------------------");
     }
 
+=======
+        //scan.nextLine();
+        String unvan = scan.nextLine();
+
+        System.out.println("------------------------------------------------------");
+        System.out.println("---------- HASTANEDE BULUNAN DOKTORLARİMİZ -----------");
+        System.out.printf("%-13s | %-15s | %-15s\n", "DOKTOR İSİM", "DOKTOR SOYİSİM", "DOKTOR UNVAN");
+        System.out.println("------------------------------------------------------");
+        boolean varMi = false;
+
+        for (Doctor w : doctorList) {
+            if (w.getUnvan().equalsIgnoreCase(unvan)) {
+                System.out.printf("%-13s | %-15s | %-15s\n", w.getIsim(), w.getSoyIsim(), w.getUnvan());
+                varMi = true;
+            }
+        }
+        if (!varMi) {
+            System.out.println("BU UNVANA AİT DOKTOR BULUNMAMAKTADIR");
+            slowPrint("\033[39mANAMENU'YE YONLENDIRILIYORSUNUZ...\033[0m\n", 20);
+        }
+        System.out.println("------------------------------------------------------");
+
+    }
+>>>>>>> origin/main
 
     public void list() {
         System.out.println("------------------------------------------------------");
